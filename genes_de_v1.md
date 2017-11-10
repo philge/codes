@@ -67,7 +67,7 @@ for (i in 2:nsamples){
 legend("topright", colnames(exp), text.col=col, bty="n")}
 dev.off()
 ```
-![alt text](./figures/data_filtering.png "Logo Title Text 1")
+![alt text](./figures/data_filtering.png "Data filtering")
 ### Figure: The density of log-CPM values for raw pre-filtered data (A) and post-filtered data (B)
 
 ## PCA to explore outliers
@@ -83,7 +83,7 @@ ggplot(data.frame(PC$x),aes(PC1,PC2,color=samples)) +
   theme(plot.title = element_text(face="bold", color="black", size=14, hjust=0.5))
 dev.off()
 ```
-![alt text](./figures/PCA_outlier_analysis_v1.png "Logo Title Text 2")
+![alt text](./figures/PCA_outlier_analysis_v1.png "PCA outlier analysis")
 #### Samples in condition B are dissimilar though belonging to same group; decided to proceed with them coz of no other replicates
 
 ## Calculating genes GC content and length
@@ -140,7 +140,7 @@ boxplot(CQN.GENE_EXPRESSION$E, las=2, col=col, main="")
 title(main="B. CQN Normalised",ylab="Log-cpm")}
 dev.off()
 ```
-![alt text](./figures/data_normalization.png "Logo Title Text 3")
+![alt text](./figures/data_normalization.png "Data normalization")
 ### Figure: Boxplots of log-CPM values showing expression distributions for unnormalised data (A) and normalised data (B)
 
 ## Differential expression (DE) analysis
@@ -168,7 +168,7 @@ dev.off()
 # Get differential expression
 DE <- topTable(FIT.CONTR, number = Inf, adjust.method = "BH", sort.by = "p")
 ```
-![alt text](./figures/mean-variance.png "Logo Title Text 4")
+![alt text](./figures/mean-variance.png "Mean-variance comparison")
 #### The mean-variance relationship of log-CPM values for this dataset is shown in the left-hand panel. Typically, the voom-plot shows a decreasing trend between the means and variances resulting from a combination of technical variation in the sequencing experiment and biological variation amongst the replicate samples from different cell populations. Experiments with high biological variation usually result in flatter trends, where variance values plateau at high expression values. Experiments with low biological variation tend to result in sharp decreasing trends. The model’s residual variances are plotted against average expression values in the right-hand panel.
 
 ```r
@@ -215,7 +215,7 @@ row.names = c("A_1", "A_2", "B_1", "B_2")), annotation_names_col = FALSE, labels
 g_symb$external_gene_name, labels_col = group, filename = "./figures/heatmap.png", fontsize_row = 3,\
 clustering_distance_cols = "euclidean", clustering_distance_rows = "euclidean")
 ```
-![alt text](./figures/heatmap.png "Logo Title Text 5")
+![alt text](./figures/heatmap.png "DEG heatmap")
 
 ## Gene ontology of the differentially expressed genes
 
@@ -256,7 +256,7 @@ GO:0098602|single organism cell adhesion|56/488|402/11099|8.3554207662863e-15|6.
 ```r
 cnetplot(ego2, categorySize="pvalue", foldChange=fold, fixed = F)
 ```
-![alt text](./figures/gene_ontology.png "Logo Title Text 6")
+![alt text](./figures/gene_ontology.png "Gene ontology analysis")
 ### Figure: Association of differentially expressed genes with gene ontology
 
 ## Pathway analysis on the differentially expressed genes
@@ -294,5 +294,5 @@ mmu04066 <- pathview(gene.data  = fold,
                      limit      = list(gene=max(abs(fold)), cpd=1),
                      gene.idtype= "ENSEMBL")
 ```
-![alt text](./figures/mmu04066.pathview.png "Logo Title Text 7")
+![alt text](./figures/mmu04066.pathview.png "Pathway analysis")
 ### Figure: Differentially expressed genes in enriched HIF-1 signalling pathway 
